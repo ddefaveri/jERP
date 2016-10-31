@@ -48,6 +48,7 @@ public class UserBean {
             Profile profile = (Profile) context.getExternalContext().getSessionMap().get("profile");
             if (profile != null) {
                 System.out.println("O usuário está logado.");
+                return;
             }
         } catch (Exception e) {
             e.printStackTrace();
