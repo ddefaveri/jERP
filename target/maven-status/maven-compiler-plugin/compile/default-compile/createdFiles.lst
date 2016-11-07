@@ -18,5 +18,6 @@ br\com\jerp\utils\ManipulateDate.class
 br\com\jerp\utils\ui\RequiredCheckboxValidator.class
 br\com\jerp\dao\utils\DAOFactory.class
 br\com\jerp\utils\ui\ConfirmPasswordValidator.class
+br\com\jerp\controller\ColaboradorMB.class
 br\com\jerp\dao\ProfileDaoImpl.class
 br\com\jerp\dao\UserDao.class

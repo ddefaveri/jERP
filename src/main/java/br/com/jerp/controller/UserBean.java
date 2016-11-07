@@ -16,6 +16,7 @@ import br.com.jerp.utils.Role;
 import br.com.jerp.utils.ManipulateDate;
 import br.com.jerp.utils.security.GenerateMD5;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;

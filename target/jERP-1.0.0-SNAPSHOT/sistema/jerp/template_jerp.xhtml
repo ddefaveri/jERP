@@ -42,8 +42,9 @@
 
     </h:head>
     <h:body onload="#{userMB.isLogged()}">
-
+        
         <section id="container" >
+            
             <!-- **********************************************************************************************************************************************************
             TOP BAR CONTENT & NOTIFICATIONS
             *********************************************************************************************************************************************************** -->
@@ -143,12 +144,12 @@
                         
                         <!-- Área de Profile -->
                         <p class="centered"><a href="#"><img src="#{facesContext.externalContext.requestContextPath}/resources/assets/img/ui-sam.jpg" class="img-circle" width="60"/></a></p>
-                        <h5 class="centered">#{indexJerp.profile.firstName} #{indexJerp.profile.lastName}</h5>
+                        <h5 class="centered">Bem vindo, #{indexJerp.profile.firstName}</h5>
                         <h6 class="centered">#{indexJerp.profile.function}</h6>
                         <!-- Fim área de Profile -->
                         
                         <li class="mt">
-                            <a class="" href="indexjerp.xhtml">
+                            <a class="" href="#{facesContext.externalContext.requestContextPath}/sistema/jerp/indexjerp.xhtml">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -181,7 +182,7 @@
                                 <span>Administrativo</span>
                             </a>
                             <ul class="sub">
-                                <li><a  href="colaborador.xhtml">Colaboradores</a></li>
+                                <li><a  href="#{facesContext.externalContext.requestContextPath}/sistema/jerp/Administrativo/colaborador.xhtml">Colaboradores</a></li>
                                 <li><a  href="#">Produtos</a></li>
                                 <li><a  href="#">Clientes</a></li>
                             </ul>
@@ -198,7 +199,7 @@
             <!--main content start-->
             <section id="main-content">
                 <ui:insert name="container_template">
-
+                    
                 </ui:insert>
             </section>
 
