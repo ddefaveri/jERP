@@ -26,8 +26,9 @@ public class ColaboradorMB {
     }
 
     public void testeMB() {
-        FacesContext.getCurrentInstance()
-                    .addMessage(null, new FacesMessage("Error!", "Ocorreu um erro para carregar o profile do usuário."));
+        FacesContext context = FacesContext.getCurrentInstance();
+         
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Your message: "));
         System.out.println("Teste de MB.");
     }
     

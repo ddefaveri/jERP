@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <ui:composition template="../template_jerp.xhtml">
+        <ui:define name="container_template">
+            <section id="container_colaborador" class="wrapper site-min-height">
+                <h3><i class="fa fa-angle-right"></i> Gerenciar Colaboradores</h3>
+                <p:messages showDetail="true" id="msgRespostas" closable="true" />
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <p:dataTable id="dtColaboradores" var="profileColaborador" value="#{colaboradorMB.profiles}" rows="10"
+                                     emptyMessage="Nenhum colaborador encontrado."
+                                     reflow="true" paginator="true" sortMode="multiple"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15,25,50">
+
+                            <p:column width="5%" headerText="#" sortBy="#{profileColaborador.id}">
+                                <h:outputText value="#{profileColaborador.id}" />
+                            </p:column>
+
+                            <p:column width="35%" headerText="Nome"  sortBy="#{profileColaborador.firstName}" filterBy="#{profileColaborador.firstName}" filterMatchMode="contains">
+                                <h:outputText value="#{profileColaborador.firstName} #{profileColaborador.lastName}" />
+                            </p:column>
+
+                            <p:column width="15%" headerText="Login" filterBy="#{profileColaborador.user.login}" filterMatchMode="contains">
+                                <h:outputText value="#{profileColaborador.user.login}" />
+                            </p:column>
+
+                            <p:column width="10%" headerText="Função"  sortBy="#{profileColaborador.function}" filterBy="#{profileColaborador.function}" filterMatchMode="contains">
+                                <h:outputText value="#{profileColaborador.function}" />
+                            </p:column>
+
+                            <p:column width="25%" headerText="Email">
+                                <h:outputText value="#{profileColaborador.email}" />
+                            </p:column>
+
+                            <p:column width="10%" headerText="Ações">
+                                <a href="#" class="btn btn-xs btn-info"><li class="fa fa-search"></li></a>
+                                <a href="#" class="btn btn-xs btn-danger"><li class="fa fa-trash-o"></li></a>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+            </section><!--/wrapper -->
+        </ui:define>
+    </ui:composition>
+</html>

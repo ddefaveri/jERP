@@ -119,10 +119,10 @@
     #BUTTONS | Base
 \*------------------------------------*/
 .mfb-component__button--main, .mfb-component__button--child {
-  background-color: #e8b845;
+  background-color: #2399E5;
   display: inline-block;
   position: relative;
-  border: none;
+  border: 2px #1F89CE solid;
   border-radius: 50%;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
   cursor: pointer;
@@ -130,7 +130,7 @@
   padding: 0;
   position: relative;
   -webkit-user-drag: none;
-  color: #f1f1f1; }
+  color: #fff; }
 
 /**
  * This is the unordered list for the list items that contain

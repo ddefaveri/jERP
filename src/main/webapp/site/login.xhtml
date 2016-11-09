@@ -30,12 +30,11 @@
         <![endif]-->
 
     </h:head>
-    <h:body>
-        
+    <h:body id="body-login-page">
         <div id="login-page">
             <div class="container">
                 <h:form styleClass="form-login">
-                    <h2 class="form-login-heading">JERP</h2>
+                    <h2 class="form-login-heading">SESC-SC</h2>
                     <div class="login-wrap"> 
                         <b:messages id="mMessageErro"/>
                         <div class="form-group">
@@ -93,9 +92,7 @@
         <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
         <script type="text/javascript"
         src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery.backstretch.min.js"></script>
-        <script>
-            $.backstretch("#{facesContext.externalContext.requestContextPath}/resources/assets/img/login-bg.jpg", {speed: 500});
-        </script>
+
 
     </h:body>
 </html>

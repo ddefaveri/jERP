@@ -54,26 +54,26 @@ var Script = function () {
                 'margin-left': '0px'
             });
             $('#sidebar').css({
-                'margin-left': '-210px'
+                'margin-left': '-250px'
             });
             $('#sidebar > ul').hide();
             $("#container").addClass("sidebar-closed");
         } else {
             $('#main-content').css({
-                'margin-left': '210px'
+                'margin-left': '250px'
             });
             $('#sidebar > ul').show();
             $('#sidebar').css({
-                'margin-left': '0'
+                'margin-left': '0px'
             });
             $("#container").removeClass("sidebar-closed");
         }
     });
 
 // custom scrollbar
-    $("#sidebar").niceScroll({styler:"fb",cursorcolor:"#4ECDC4", cursorwidth: '3', cursorborderradius: '10px', background: '#404040', spacebarenabled:false, cursorborder: ''});
+    $("#sidebar").niceScroll({styler:"fb",cursorcolor:"#6dddff", cursorwidth: '3', cursorborderradius: '10px', background: '#404040', spacebarenabled:false, cursorborder: ''});
 
-    $("html").niceScroll({styler:"fb",cursorcolor:"#4ECDC4", cursorwidth: '6', cursorborderradius: '10px', background: '#404040', spacebarenabled:false,  cursorborder: '', zindex: '1000'});
+    $("html").niceScroll({styler:"fb",cursorcolor:"#6dddff", cursorwidth: '8', cursorborderradius: '10px', background: '#404040', spacebarenabled:false,  cursorborder: '', zindex: '1000'});
 
 // widget tools
 

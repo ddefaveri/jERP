@@ -9,37 +9,34 @@
             <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/mfb.css" />
         </ui:define>
         <ui:define name="container_template">
-            <h:form id="form">
-                <p:growl />
-                <ul id="menu" class="mfb-component--br mfb-slidein-spring" data-mfb-toggle="hover" >
-                    <li class="mfb-component__wrap">
-                        <a href="#" class="mfb-component__button--main black-bg" data-mfb-label="Novo Colaborador" data-toggle="modal" data-target="#modalCadastrar" >
-                            <i class="mfb-component__main-icon--resting fa fa-plus" ></i>
-                            <i class="mfb-component__main-icon--active fa fa-times" ></i>
-                        </a>
-                    </li>
-                </ul>
-                <div class="modal fade" id="modalCadastrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times" ></i></span></button>
-                                <h4 class="modal-title" id="myModalLabel">Novo Colaborador</h4>
-                            </div>
-                            <div class="modal-body box">
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <b:commandButton id="cadastrarColaborador" action="#{colaboradorMB.testeMB}" styleClass="btn btn-theme btn-ok" value="Cadastrar" ></b:commandButton>
-                                <!--<a href="#" onclick="" id="cadastrarColaborador"  ></a>-->
-                            </div>
+            <ul id="menu_rapido" class="mfb-component--br mfb-slidein-spring" data-mfb-toggle="hover" >
+                <li class="mfb-component__wrap">
+                    <a href="#" class="mfb-component__button--main black-bg" data-mfb-label="Novo Colaborador" onclick="PF('dlg2').show();" >
+                        <i class="mfb-component__main-icon--resting fa fa-plus" ></i>
+                        <i class="mfb-component__main-icon--active fa fa-times" ></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="modal fade" id="modalCadastrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times" ></i></span></button>
+                            <h4 class="modal-title" id="myModalLabel">Novo Colaborador</h4>
+                        </div>
+                        <div class="modal-body box">
+                            conteúdo
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <a href="#" class="btn btn-theme btn-ok" >Cadastrar</a>
                         </div>
                     </div>
                 </div>
-            </h:form>
+            </div>
             <section id="container_colaborador" class="wrapper site-min-height">
                 <h3><i class="fa fa-angle-right"></i> Gerenciar Colaboradores</h3>
+                <b:messages id="messagesRes" escape="false" />
                 <div class="row mt">
                     <div class="col-lg-12">
                         <p:dataTable id="dtColaboradores" var="profileColaborador" value="#{colaboradorMB.profiles}" rows="10"
@@ -75,29 +72,24 @@
                         </p:dataTable>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
+                        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="300" width="400" class="modal fade">
+                            <h:outputText value="This is a Modal Dialog." />
+                        </p:dialog>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p:commandButton value="Ajax Submit" id="ajax" update="growlResposta,messagesRes" actionListener="#{colaboradorMB.testeMB()}" styleClass="ui-priority-primary" class="btn btn-sm btn-theme" />
+                    </div>
+                </div>
             </section><!--/wrapper -->
         </ui:define>
 
         <ui:define name="scripts_template">
-            <!-- js placed at the end of the document so the pages load faster -->
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery.js"></script>
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery-1.8.3.min.js"></script>
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/bootstrap.min.js"></script>
-            <script class="include" type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery.scrollTo.min.js"></script>
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery.sparkline.js"></script>
-
-
-            <!--common script for all pages-->
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/common-scripts.js"></script>
-
-            <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/gritter/js/jquery.gritter.js"></script>
-            <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/gritter-conf.js"></script>
-
-            <!--script for this page-->
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/sparkline-chart.js"></script>    
-            <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/zabuto_calendar.js"></script>	
 
             <script>
 
