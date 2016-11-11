@@ -39,19 +39,19 @@
                         <b:messages id="mMessageErro"/>
                         <div class="form-group">
                             <label for="username">Usuário</label>
-                            <b:inputText placeholder="Digite seu usuário" id="username" 
+                            <p:inputText placeholder="Digite seu usuário" id="username" 
                                          value="#{userMB.user.login}" styleClass="form-control" />
                         </div>
                         <div class="form-group">
                             <label for="j_password">Senha </label> 
-                            <b:inputSecret placeholder="Digite sua senha" id="password" 
+                            <p:password placeholder="Digite sua senha" id="password" 
                                          value="#{userMB.user.password}" styleClass="form-control" />
-                            <a data-toggle="modal" style="padding-right: 3px;" href="/site/login.html#myModal"> (esqueci a senha)</a>
+                            <a data-toggle="modal" class="pull-right" style="margin: 5px 0 25px 0; color: #FF6C60;" href="/site/login.html#myModal">Lembrar minha senha.</a>
                         </div>                  
                         <div class="form-group">
-                            <b:commandButton icon-size="1x" iconAwesome="fa fa-lock"
-                                             value="Acessar Sistema" styleClass="btn btn-theme btn-block" 
-                                             action="#{userMB.doLogin}" update="mMessageErro" ></b:commandButton>            
+                            <p:commandButton value="Acessar Sistema" styleClass="btn btn-theme btn-block" 
+                                             icon="fa fa-lock"
+                                             action="#{userMB.doLogin}" update="mMessageErro" ></p:commandButton>            
                         </div>
                     </div>
 
@@ -66,13 +66,13 @@
                                 <div class="modal-body">
                                     <b:messages id="mMessageErroRecuperaSenha"/>
                                     <p>Digite o e-mail que você você deseja alterar a senha.</p>
-                                    <b:inputText id="email" placeholder="E-mail" autocomplete="off" 
+                                    <p:inputText id="email" placeholder="E-mail" autocomplete="off" 
                                                  value="#{userMB.profile.email}" styleClass="form-control placeholder-no-fix" />
                                 </div>
                                 <div class="modal-footer">
                                     <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
-                                    <b:commandButton value="Recuperar Senha" styleClass="btn btn-theme" 
-                                             action="#{userMB.doRecuperarSenha}" update="mMessageErroRecuperaSenha" ></b:commandButton> 
+                                    <p:commandButton value="Recuperar Senha" styleClass="btn btn-theme" 
+                                             action="#{userMB.doRecuperarSenha}" update="mMessageErroRecuperaSenha" ></p:commandButton> 
                                 </div>
                             </div>
                         </div>

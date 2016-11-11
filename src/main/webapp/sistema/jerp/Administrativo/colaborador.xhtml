@@ -17,73 +17,70 @@
                     </a>
                 </li>
             </ul>
-            <div class="modal fade" id="modalCadastrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times" ></i></span></button>
-                            <h4 class="modal-title" id="myModalLabel">Novo Colaborador</h4>
-                        </div>
-                        <div class="modal-body box">
-                            conteúdo
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <a href="#" class="btn btn-theme btn-ok" >Cadastrar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <section id="container_colaborador" class="wrapper site-min-height">
                 <h3><i class="fa fa-angle-right"></i> Gerenciar Colaboradores</h3>
                 <b:messages id="messagesRes" escape="false" />
                 <div class="row mt">
                     <div class="col-lg-12">
-                        <p:dataTable id="dtColaboradores" var="profileColaborador" value="#{colaboradorMB.profiles}" rows="10"
-                                     emptyMessage="Nenhum colaborador encontrado."
-                                     reflow="true" paginator="true" sortMode="multiple"
-                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15,25,50">
+                        <h:form id="formColaborador">
+                            <p:dataTable id="dtColaboradores" var="profileColaborador" value="#{colaboradorMB.profiles}" rows="10"
+                                         emptyMessage="Nenhum colaborador encontrado."
+                                         reflow="true" paginator="true" sortMode="multiple"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15,25,50" paginatorPosition="bottom">
 
-                            <p:column width="5%" headerText="#" sortBy="#{profileColaborador.id}">
-                                <h:outputText value="#{profileColaborador.id}" />
-                            </p:column>
+                                <p:column width="5%" headerText="#" sortBy="#{profileColaborador.id}">
+                                    <h:outputText value="#{profileColaborador.id}" />
+                                </p:column>
 
-                            <p:column width="35%" headerText="Nome"  sortBy="#{profileColaborador.firstName}" filterBy="#{profileColaborador.firstName}" filterMatchMode="contains">
-                                <h:outputText value="#{profileColaborador.firstName} #{profileColaborador.lastName}" />
-                            </p:column>
+                                <p:column width="35%" headerText="Nome"  sortBy="#{profileColaborador.firstName}" filterBy="#{profileColaborador.firstName}" filterMatchMode="contains">
+                                    <h:outputText value="#{profileColaborador.firstName} #{profileColaborador.lastName}" />
+                                </p:column>
 
-                            <p:column width="15%" headerText="Login" filterBy="#{profileColaborador.user.login}" filterMatchMode="contains">
-                                <h:outputText value="#{profileColaborador.user.login}" />
-                            </p:column>
+                                <p:column width="15%" headerText="Login" filterBy="#{profileColaborador.user.login}" filterMatchMode="contains">
+                                    <h:outputText value="#{profileColaborador.user.login}" />
+                                </p:column>
 
-                            <p:column width="10%" headerText="Função"  sortBy="#{profileColaborador.function}" filterBy="#{profileColaborador.function}" filterMatchMode="contains">
-                                <h:outputText value="#{profileColaborador.function}" />
-                            </p:column>
+                                <p:column width="10%" headerText="Função"  sortBy="#{profileColaborador.function}" filterBy="#{profileColaborador.function}" filterMatchMode="contains">
+                                    <h:outputText value="#{profileColaborador.function}" />
+                                </p:column>
 
-                            <p:column width="25%" headerText="Email">
-                                <h:outputText value="#{profileColaborador.email}" />
-                            </p:column>
+                                <p:column width="25%" headerText="Email">
+                                    <h:outputText value="#{profileColaborador.email}" />
+                                </p:column>
+                                <p:column width="10%" headerText="Ações">
+                                    <p:commandButton update=":formColaborador:colaboradorDetail" oncomplete="PF('colaboradorDialog').show()" styleClass="btn btn-xs" icon="ui-icon-search" title="View" >
+                                        <f:setPropertyActionListener value="#{profileColaborador}" target="#{colaboradorMB.selectedProfile}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                            <p:dialog header="Informações do Colaborador" widgetVar="colaboradorDialog" modal="true" 
+                                      showEffect="fade" hideEffect="fade" resizable="false"
+                                      width="500" height="400">
+                                <p:outputPanel id="colaboradorDetail" style="text-align:center;">
+                                    <p:panelGrid  columns="2" rendered="#{not empty colaboradorMB.selectedProfile}">
 
-                            <p:column width="10%" headerText="Ações">
-                                <a href="#" class="btn btn-xs btn-info"><li class="fa fa-search"></li></a>
-                                <a href="#" class="btn btn-xs btn-danger"><li class="fa fa-trash-o"></li></a>
-                            </p:column>
-                        </p:dataTable>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />
-                        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="300" width="400" class="modal fade">
-                            <h:outputText value="This is a Modal Dialog." />
-                        </p:dialog>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p:commandButton value="Ajax Submit" id="ajax" update="growlResposta,messagesRes" actionListener="#{colaboradorMB.testeMB()}" styleClass="ui-priority-primary" class="btn btn-sm btn-theme" />
+                                        <h:outputText value="Id:" />
+                                        <h:outputText value="#{colaboradorMB.selectedProfile.email}" />
+
+                                        <h:outputText value="Year" />
+                                        <h:outputText value="#{colaboradorMB.selectedProfile.firstName}" />
+
+                                        <h:outputText value="Color:" />
+                                        <h:outputText value="#{colaboradorMB.selectedProfile.function}" />
+
+                                        <h:outputText value="Price" />
+                                        <h:outputText value="$#{colaboradorMB.selectedProfile.id}" />
+
+                                    </p:panelGrid>
+                                </p:outputPanel>
+                                <f:facet name="footer">
+                                    <div class="pull-right">
+                                        Facet Hearder
+                                    </div>
+                                </f:facet>
+                            </p:dialog>
+                        </h:form>
                     </div>
                 </div>
             </section><!--/wrapper -->

@@ -103,6 +103,12 @@ public class UserBean {
         //return "login.xhtml?faces-redirect=true";
     }
 
+    public void delete(Profile selectedProfile){
+        System.out.println("teste! "+selectedProfile.getId());
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Deletado: "+selectedProfile.getFirstName()));
+    }
+    
     public String save() {
 
         try {

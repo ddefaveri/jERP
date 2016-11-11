@@ -35,7 +35,7 @@ public class ColaboradorMB {
     public List<Profile> getProfiles() {
         return this.profiles;
     }
-
+    
     public void setProfiles() {
         ProfileBusiness bnsProfile = new ProfileBusiness();
         profiles = bnsProfile.getProfiles();
@@ -46,8 +46,8 @@ public class ColaboradorMB {
         return selectedProfile;
     }
 
-    public void setSelectedProfile(Profile selectedProfile) {
+    public void setSelectedProfile(Profile p_selectedProfile) {
         System.out.println("Selecionei a linha no data grid.");
-        this.selectedProfile = selectedProfile;
+        this.selectedProfile = p_selectedProfile;
     }
 }
