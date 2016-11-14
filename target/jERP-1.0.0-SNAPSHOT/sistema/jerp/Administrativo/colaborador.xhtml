@@ -80,6 +80,33 @@
                                     </div>
                                 </f:facet>
                             </p:dialog>
+                            
+                            <p:dialog header="Novo Colaborador" widgetVar="novoColaboradorDialog" modal="true" 
+                                      showEffect="fade" hideEffect="fade" resizable="false"
+                                      width="500" height="400">
+                                <p:outputPanel id="novoColaboradorDetail" style="text-align:center;">
+                                    <p:panelGrid  columns="2" rendered="#{not empty colaboradorMB.selectedProfile}">
+
+                                        <h:outputText value="Id:" />
+                                        <h:outputText value="#{colaboradorMB.selectedProfile.email}" />
+
+                                        <h:outputText value="Year" />
+                                        <h:outputText value="#{colaboradorMB.selectedProfile.firstName}" />
+
+                                        <h:outputText value="Color:" />
+                                        <h:outputText value="#{colaboradorMB.selectedProfile.function}" />
+
+                                        <h:outputText value="Price" />
+                                        <h:outputText value="$#{colaboradorMB.selectedProfile.id}" />
+
+                                    </p:panelGrid>
+                                </p:outputPanel>
+                                <f:facet name="footer">
+                                    <div class="pull-right">
+                                        Facet Hearder
+                                    </div>
+                                </f:facet>
+                            </p:dialog>
                         </h:form>
                     </div>
                 </div>

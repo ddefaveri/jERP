@@ -28,11 +28,14 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
     </h:head>
     <h:body id="body-login-page">
         <div id="login-page">
             <div class="container">
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                <p:dialog appendTo="right,bottom" widgetVar="statusDialog" draggable="false" closable="false" resizable="false" showHeader="false" >
+                    <img alt="" src="#{facesContext.externalContext.requestContextPath}/resources/assets/img/spinner1.gif" height="70px" />
+                </p:dialog>
                 <h:form styleClass="form-login">
                     <h2 class="form-login-heading">SESC-SC</h2>
                     <div class="login-wrap"> 
@@ -45,7 +48,7 @@
                         <div class="form-group">
                             <label for="j_password">Senha </label> 
                             <p:password placeholder="Digite sua senha" id="password" 
-                                         value="#{userMB.user.password}" styleClass="form-control" />
+                                        value="#{userMB.user.password}" styleClass="form-control" />
                             <a data-toggle="modal" class="pull-right" style="margin: 5px 0 25px 0; color: #FF6C60;" href="/site/login.html#myModal">Lembrar minha senha.</a>
                         </div>                  
                         <div class="form-group">
@@ -72,7 +75,7 @@
                                 <div class="modal-footer">
                                     <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
                                     <p:commandButton value="Recuperar Senha" styleClass="btn btn-theme" 
-                                             action="#{userMB.doRecuperarSenha}" update="mMessageErroRecuperaSenha" ></p:commandButton> 
+                                                     action="#{userMB.doRecuperarSenha}" update="mMessageErroRecuperaSenha" ></p:commandButton> 
                                 </div>
                             </div>
                         </div>
@@ -92,7 +95,5 @@
         <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
         <script type="text/javascript"
         src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/jquery.backstretch.min.js"></script>
-
-
     </h:body>
 </html>
