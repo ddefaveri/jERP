@@ -11,7 +11,7 @@
         <ui:define name="container_template">
             <ul id="menu_rapido" class="mfb-component--br mfb-slidein-spring" data-mfb-toggle="hover" >
                 <li class="mfb-component__wrap">
-                    <a href="#" class="mfb-component__button--main black-bg" data-mfb-label="Novo Colaborador" onclick="PF('dlg2').show();" >
+                    <a href="#" class="mfb-component__button--main black-bg" data-mfb-label="Novo Colaborador" onclick="PF('novoColaboradorDialog').show();" >
                         <i class="mfb-component__main-icon--resting fa fa-plus" ></i>
                         <i class="mfb-component__main-icon--active fa fa-times" ></i>
                     </a>
@@ -55,8 +55,7 @@
                                 </p:column>
                             </p:dataTable>
                             <p:dialog header="Informações do Colaborador" widgetVar="colaboradorDialog" modal="true" 
-                                      showEffect="fade" hideEffect="fade" resizable="false"
-                                      width="500" height="400">
+                                      showEffect="fade" hideEffect="fade" resizable="false">
                                 <p:outputPanel id="colaboradorDetail" style="text-align:center;">
                                     <p:panelGrid  columns="2" rendered="#{not empty colaboradorMB.selectedProfile}">
 
@@ -80,32 +79,53 @@
                                     </div>
                                 </f:facet>
                             </p:dialog>
-                            
-                            <p:dialog header="Novo Colaborador" widgetVar="novoColaboradorDialog" modal="true" 
-                                      showEffect="fade" hideEffect="fade" resizable="false"
-                                      width="500" height="400">
-                                <p:outputPanel id="novoColaboradorDetail" style="text-align:center;">
-                                    <p:panelGrid  columns="2" rendered="#{not empty colaboradorMB.selectedProfile}">
 
-                                        <h:outputText value="Id:" />
-                                        <h:outputText value="#{colaboradorMB.selectedProfile.email}" />
+                            <p:dialog header="Novo Colaborador" widgetVar="novoColaboradorDialog" id="novoColaboradorDialog" modal="true" 
+                                      showEffect="fade" hideEffect="fade" resizable="false">
 
-                                        <h:outputText value="Year" />
-                                        <h:outputText value="#{colaboradorMB.selectedProfile.firstName}" />
+                                <div class="ui-fluid modal-body">
+                                    <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
+                                        <p:outputLabel for="input" value="Input"/>
+                                        <p:inputText id="input"/>
 
-                                        <h:outputText value="Color:" />
-                                        <h:outputText value="#{colaboradorMB.selectedProfile.function}" />
+                                        <p:outputLabel for="area" value="Textarea"/>
+                                        <p:inputTextarea id="area"/>
 
-                                        <h:outputText value="Price" />
-                                        <h:outputText value="$#{colaboradorMB.selectedProfile.id}" />
+                                        <p:outputLabel for="calendar" value="Calendar"/>
+                                        <p:calendar id="calendar"/>
 
+                                        <p:outputLabel for="ac" value="AutoComplete"/>
+                                        <p:autoComplete id="ac" completeMethod="#{autoCompleteView.completeText}" />
+
+                                        <p:outputLabel for="mask" value="Mask"/>
+                                        <p:inputMask id="mask" mask="99/99/9999"/>
+
+                                        <p:outputLabel for="pwd" value="Password"/>
+                                        <p:password id="pwd" />
+
+                                        <p:outputLabel for="keyboard" value="Keyboard"/>
+                                        <p:keyboard id="keyboard" />
+
+                                        <p:outputLabel for="onemenu" value="OneMenu"/>
+                                        <p:selectOneMenu id="onemenu">
+                                            <f:selectItem itemLabel="Select One" itemValue="" />
+                                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                                            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                                            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                                        </p:selectOneMenu>
+
+                                        <p:outputLabel for="spinner" value="Spinner"/>
+                                        <p:spinner id="spinner"/>
                                     </p:panelGrid>
-                                </p:outputPanel>
-                                <f:facet name="footer">
+                                </div>
+
+                                <div class="modal-footer">
                                     <div class="pull-right">
-                                        Facet Hearder
+                                        <p:button onclick="PF('novoColaboradorDialog').hide();" value="Cancelar" class="btn btn-sm btn-default" />
+                                        <p:button value="Salvar" class="btn btn-sm btn-primary"  />
                                     </div>
-                                </f:facet>
+                                </div>
+
                             </p:dialog>
                         </h:form>
                     </div>

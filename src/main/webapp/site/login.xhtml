@@ -22,7 +22,6 @@
         <!-- Custom styles for this template -->
         <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/style.css" />
         <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/assets/css/style-responsive.css" />
-
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -33,30 +32,50 @@
         <div id="login-page">
             <div class="container">
                 <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
-                <p:dialog appendTo="right,bottom" widgetVar="statusDialog" draggable="false" closable="false" resizable="false" showHeader="false" >
-                    <img alt="" src="#{facesContext.externalContext.requestContextPath}/resources/assets/img/spinner1.gif" height="70px" />
-                </p:dialog>
+                <div id="divDialogLoad">
+                    <p:dialog widgetVar="statusDialog"  draggable="false" closable="false" resizable="false" showHeader="false" >
+                        <img alt="" src="#{facesContext.externalContext.requestContextPath}/resources/assets/img/spinner1.gif" height="70px" />
+                    </p:dialog>
+                </div>
                 <h:form styleClass="form-login">
-                    <h2 class="form-login-heading">SESC-SC</h2>
-                    <div class="login-wrap"> 
-                        <b:messages id="mMessageErro"/>
-                        <div class="form-group">
-                            <label for="username">Usuário</label>
-                            <p:inputText placeholder="Digite seu usuário" id="username" 
-                                         value="#{userMB.user.login}" styleClass="form-control" />
+                    <div class="row">
+                        <div class="col-sm-7 col-md-border">
+                            <div id="div_media_logo">
+                                <img alt="" src="#{facesContext.externalContext.requestContextPath}/resources/assets/img/LogoSescRecortado.png" height="60px"/>
+                            </div>
+                            <h3 class="login-wrap">Acesso ao sistema</h3>
+                            <div class="login-wrap">
+                                <div class="form-group">
+                                    <label for="username">Usuário</label>
+                                    <p:inputText placeholder="Digite seu usuário" id="username" 
+                                                 value="#{userMB.user.login}" styleClass="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="j_password">Senha </label> 
+                                    <p:password placeholder="Digite sua senha" id="password" 
+                                                value="#{userMB.user.password}" styleClass="form-control" />
+                                </div>                  
+                                <div class="form-group">
+                                    <p:commandButton value="Acessar Sistema" styleClass="btn btn-theme btn-block" 
+                                                     icon="fa fa-lock"
+                                                     action="#{userMB.doLogin}" update="mMessageErro" ></p:commandButton>            
+                                </div>
+                                <div class="form-group">
+                                    <a data-toggle="modal" class="pull-right" style="margin: 5px 0 25px 0; color: #FF6C60;" href="/site/login.html#myModal">Recuperar minha senha.</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="j_password">Senha </label> 
-                            <p:password placeholder="Digite sua senha" id="password" 
-                                        value="#{userMB.user.password}" styleClass="form-control" />
-                            <a data-toggle="modal" class="pull-right" style="margin: 5px 0 25px 0; color: #FF6C60;" href="/site/login.html#myModal">Lembrar minha senha.</a>
-                        </div>                  
-                        <div class="form-group">
-                            <p:commandButton value="Acessar Sistema" styleClass="btn btn-theme btn-block" 
-                                             icon="fa fa-lock"
-                                             action="#{userMB.doLogin}" update="mMessageErro" ></p:commandButton>            
+                        <div id="col_logo" class="col-sm-5 col-md-border">
+                            <br/><br/>
+                            <h2 class="">
+                                <img alt="" src="#{facesContext.externalContext.requestContextPath}/resources/assets/img/LogoSescRecortado.png" width="95%" />
+                            </h2>
+                            <br/><br/><br/><br/><br/><br/><br/>
+                            <h6 class="pull-right" style="margin-right: 10px;">Versão: 0.0.1-betha</h6>
                         </div>
                     </div>
+                        
+                    <p:messages id="mMessageErro" closable="true" showDetail="true"/>
 
                     <!-- Modal Recupera senha-->
                     <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
@@ -67,7 +86,7 @@
                                     <h4 class="modal-title">Esqueceu sua senha?</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <b:messages id="mMessageErroRecuperaSenha"/>
+                                    <p:messages id="mMessageErroRecuperaSenha" closable="true" showDetail="true"/>
                                     <p>Digite o e-mail que você você deseja alterar a senha.</p>
                                     <p:inputText id="email" placeholder="E-mail" autocomplete="off" 
                                                  value="#{userMB.profile.email}" styleClass="form-control placeholder-no-fix" />

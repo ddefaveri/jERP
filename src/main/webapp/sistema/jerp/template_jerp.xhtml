@@ -42,9 +42,14 @@
 
     </h:head>
     <h:body onload="#{userMB.isLogged()}">
-        <b:growl showDetail="true" id="growlResposta" 
-                 delay="5000" escape="false" allowDismiss="true" 
-                 showSummary="true" show-detail="true"/>
+        <p:growl showDetail="true" id="growlResposta" 
+                 escape="false" life="5000"/>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+        <div id="divDialogLoad">
+            <p:dialog widgetVar="statusDialog"  draggable="false" closable="false" resizable="false" showHeader="false" >
+                <img alt="" src="#{facesContext.externalContext.requestContextPath}/resources/assets/img/spinner1.gif" height="70px" />
+            </p:dialog>
+        </div>
         <section id="container" >
 
             <!-- **********************************************************************************************************************************************************
@@ -127,7 +132,7 @@
                     <div class="top-menu">
                         <ul class="nav pull-right top-menu">
                             <li>
-                                <b:commandButton value="Logout" styleClass="logout" action="#{userMB.doLogout()}" ></b:commandButton>  
+                                <p:commandButton value="Logout" styleClass="logout" action="#{userMB.doLogout()}" ></p:commandButton>  
                             </li>
                         </ul>
                     </div>
@@ -238,7 +243,7 @@
 
         <!--common script for all pages-->
         <script src="#{facesContext.externalContext.requestContextPath}/resources/assets/js/common-scripts.js"></script>
-        
+
         <ui:insert name="scripts_template">
 
         </ui:insert>
