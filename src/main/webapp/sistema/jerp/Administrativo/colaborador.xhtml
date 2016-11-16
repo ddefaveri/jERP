@@ -84,39 +84,39 @@
                                       showEffect="fade" hideEffect="fade" resizable="false">
 
                                 <div class="ui-fluid modal-body">
-                                    <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
-                                        <p:outputLabel for="input" value="Input"/>
-                                        <p:inputText id="input"/>
-
-                                        <p:outputLabel for="area" value="Textarea"/>
-                                        <p:inputTextarea id="area"/>
-
-                                        <p:outputLabel for="calendar" value="Calendar"/>
-                                        <p:calendar id="calendar"/>
-
-                                        <p:outputLabel for="ac" value="AutoComplete"/>
-                                        <p:autoComplete id="ac" completeMethod="#{autoCompleteView.completeText}" />
-
-                                        <p:outputLabel for="mask" value="Mask"/>
-                                        <p:inputMask id="mask" mask="99/99/9999"/>
-
-                                        <p:outputLabel for="pwd" value="Password"/>
-                                        <p:password id="pwd" />
-
-                                        <p:outputLabel for="keyboard" value="Keyboard"/>
-                                        <p:keyboard id="keyboard" />
-
-                                        <p:outputLabel for="onemenu" value="OneMenu"/>
-                                        <p:selectOneMenu id="onemenu">
-                                            <f:selectItem itemLabel="Select One" itemValue="" />
-                                            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-                                            <f:selectItem itemLabel="PS4" itemValue="PS4" />
-                                            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-                                        </p:selectOneMenu>
-
-                                        <p:outputLabel for="spinner" value="Spinner"/>
-                                        <p:spinner id="spinner"/>
-                                    </p:panelGrid>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <p:outputLabel for="tboxPrimeiroNome" value="Primeiro Nome"/>
+                                            <p:inputText id="tboxPrimeiroNome" size="20"/>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <p:outputLabel for="tboxSobrenome" value="Sobrenome"/>
+                                            <p:inputText id="tboxSobrenome" size="40"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p:outputLabel for="tboxEmail" value="E-mail"/>
+                                            <p:inputText id="tboxEmail" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <p:outputLabel for="tboxDataNascimento" value="Data Nascimento"/>
+                                            <p:calendar id="tboxDataNascimento"  />
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p:outputLabel value="Sexo"/>
+                                            <p:selectOneButton>
+                                                <f:selectItem itemLabel="Masc" itemValue="Xbox One" />
+                                                <f:selectItem itemLabel="Fem" itemValue="PS4" />
+                                            </p:selectOneButton>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <p:outputLabel for="tboxFuncao" value="Função"/>
+                                            
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="modal-footer">
