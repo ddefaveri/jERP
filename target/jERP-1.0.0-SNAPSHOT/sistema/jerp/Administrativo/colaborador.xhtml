@@ -86,35 +86,51 @@
                                 <div class="ui-fluid modal-body">
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <p:outputLabel for="tboxPrimeiroNome" value="Primeiro Nome"/>
+                                            <p:outputLabel for="tboxPrimeiroNome" value="Primeiro Nome"/><br/>
                                             <p:inputText id="tboxPrimeiroNome" size="20"/>
                                         </div>
                                         <div class="col-sm-7">
-                                            <p:outputLabel for="tboxSobrenome" value="Sobrenome"/>
+                                            <p:outputLabel for="tboxSobrenome" value="Sobrenome"/><br/>
                                             <p:inputText id="tboxSobrenome" size="40"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <p:outputLabel for="tboxEmail" value="E-mail"/>
+                                            <p:outputLabel for="tboxEmail" value="E-mail"/><br/>
                                             <p:inputText id="tboxEmail" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <p:outputLabel for="tboxDataNascimento" value="Data Nascimento"/>
-                                            <p:calendar id="tboxDataNascimento"  />
+                                            <p:outputLabel for="tboxDataNascimento" value="Data Nascimento"/><br/>
+                                            <p:calendar id="tboxDataNascimento" navigator="true" pattern="dd/MM/yyyy" mindate="01/01/1900" mask="99/99/9999" />
                                         </div>
                                         <div class="col-sm-4">
-                                            <p:outputLabel value="Sexo"/>
-                                            <p:selectOneButton>
-                                                <f:selectItem itemLabel="Masc" itemValue="Xbox One" />
-                                                <f:selectItem itemLabel="Fem" itemValue="PS4" />
+                                            <p:outputLabel for="tboxSexo" value="Sexo"/><br/>
+                                            <p:selectOneButton id="tboxSexo" >
+                                                <f:selectItem itemLabel="Masc" itemValue="m" />
+                                                <f:selectItem itemLabel="Fem" itemValue="f" />
                                             </p:selectOneButton>
                                         </div>
                                         <div class="col-sm-4">
-                                            <p:outputLabel for="tboxFuncao" value="Função"/>
-                                            
+                                            <p:outputLabel for="tboxFunção" value="Função" /><br/>
+                                            <p:selectOneMenu id="tboxFunção" 
+                                                             filter="true" filterMatchMode="startsWith" style="width:125px">
+                                                <f:selectItem itemLabel="Gerente" itemValue="Gerente" />
+                                                <f:selectItem itemLabel="Projetista" itemValue="Projetista" />
+                                                <f:selectItem itemLabel="Administrativo" itemValue="Administrativo" />
+                                            </p:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="">
+                                                <p:fileUpload fileUploadListener="#{userMB.uploadAvatar}"
+                                                              mode="simple"
+                                                              update="growlResposta"
+                                                              sizeLimit="10000000"
+                                                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.NaturalId;
+import org.primefaces.model.UploadedFile;
  
 @Entity
 public class Profile implements Serializable {
@@ -22,6 +23,7 @@ public class Profile implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date birth;
     private String function;
+    private byte[] avatar;
     
     @OneToOne(cascade = CascadeType.ALL)
     @MapsId
@@ -90,6 +92,15 @@ public class Profile implements Serializable {
     public void setFunction(String function) {
         this.function = function;
     }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
+    
     
     
 }

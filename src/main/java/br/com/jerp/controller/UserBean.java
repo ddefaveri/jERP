@@ -20,13 +20,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 @ManagedBean(name = "userMB")
-@RequestScoped
+@SessionScoped
 public class UserBean {
 
     private User user = null;
@@ -40,6 +43,14 @@ public class UserBean {
     public void init() {
         user = new User();
         profile = new Profile();
+    }
+
+    public void uploadAvatar() {
+        if (profile.getAvatar() != null) {
+            FacesMessage message = new FacesMessage("Succesful", "Image is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+        System.out.println("Entrou no upload da foto.");
     }
 
     public void isLogged() {
@@ -103,12 +114,12 @@ public class UserBean {
         //return "login.xhtml?faces-redirect=true";
     }
 
-    public void delete(Profile selectedProfile){
-        System.out.println("teste! "+selectedProfile.getId());
+    public void delete(Profile selectedProfile) {
+        System.out.println("teste! " + selectedProfile.getId());
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Deletado: "+selectedProfile.getFirstName()));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Deletado: " + selectedProfile.getFirstName()));
     }
-    
+
     public String save() {
 
         try {
